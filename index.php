@@ -46,6 +46,7 @@ include 'db.php';
             <td>Article</td>
             <td>Quantité</td>
             <td>Prix</td>
+            <td>Supprimer</td>
       ';
       // boucle pour afficher tout les articles
       while ($item = $list->fetch()){
@@ -55,6 +56,13 @@ include 'db.php';
               <td>' . $item['name'] . '</td>
               <td>' . $item['amount'] . '</td>
               <td>' . $item['price'] . '€</td>
+              <!-- sepression de post -->
+              <td>
+                <form action="delete.php" method="post">
+                  <input type="hidden" value="' . $item['id'] . '" name="delete">
+                  <input type="submit" value="X">
+                </form>
+              </td>
             </tr>
         ';
       };
