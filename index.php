@@ -22,7 +22,14 @@ include 'db.php';
   </header>
 
   <section>
-    <h2>Nos courses</h2>
+    <h2>Ajouter un truc cool à la liste de course !</h2>
+
+    <form action="post.php" method="post">
+      <input type="text" name="name" value="name" placeholder="Nom de l'article">
+      <input type="int" name="amount" value="1" placeholder="Quantité">
+      <input type="int" name="price" value="0" placeholder="Prix">
+      <input type="submit" name="post" value="Ajouter">
+    </form>
   </section>
 
   <footer>
