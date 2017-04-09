@@ -32,6 +32,40 @@ include 'db.php';
     </form>
   </section>
 
+  <section>
+    <h2>Liste de cours</h2>
+
+    <?php
+      // preparation des articles
+      $list = $db->query('SELECT id, name, amount, price FROM list ORDER BY id');
+      // affichage des articles
+      echo '
+      <table>
+        <tbody>
+          <tr>
+            <td>Article</td>
+            <td>Quantité</td>
+            <td>Prix</td>
+      ';
+      // boucle pour afficher tout les articles
+      while ($item = $list->fetch()){
+        echo '
+            </tr>
+              <tr>
+              <td>' . $item['name'] . '</td>
+              <td>' . $item['amount'] . '</td>
+              <td>' . $item['price'] . '€</td>
+            </tr>
+        ';
+      };
+      // fin de la table des articles
+      echo '
+        </tbody>
+      </table>
+      ';
+    ?>
+  </section>
+
   <footer>
     <p>Une petite appli web pour gérer nos courses à la maison.</p>
   </footer>
