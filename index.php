@@ -56,9 +56,15 @@ $total = 0;
             <div class="input-field col s12">
               <i class="material-icons prefix">shopping_basket</i>
               <input id="article" type="text" class="validate" name="name">
-              <label for="article">Nom de l'article</label>
+              <label for="article"><b>Nom de l'article</b></label>
+            </div>
+            <!-- quantité -->
+            <label for="amount" class="col s12"><b>Quantité</b></label>
+            <div class="range-field col s12">
+              <input type="range" id="amount" name="amount" value="1" min="0" max="10" step="1" />
             </div>
             <!-- poid en kilos -->
+            <label class="col s12"><b>Poids</b></label>
             <label for="kilos" class="col s6">Kilogramme (Kg)</label>
             <label for="gramme" class="col s6">Gramme (g)</label>
             <div class="range-field col s6">
@@ -68,15 +74,15 @@ $total = 0;
             <div class="range-field col s6">
               <input type="range" id="gramme" name="gramme" value="0" min="0" max="1000" step="10" />
             </div>
-            <!-- quantité -->
-            <label for="amount" class="col s12">Quantité</label>
-            <div class="range-field col s12">
-              <input type="range" id="amount" name="amount" value="1" min="0" max="10" step="1" />
-            </div>
             <!-- prix en € -->
-            <label for="price" class="col s12">Prix</label>
-            <div class="range-field col s12">
-              <input type="range" id="price" name="price" value="0" min="0" max="100" step="1" />
+            <label class="col s12"><b>€ Prix</b></label>
+            <label for="euro" class="col s6">euro</label>
+            <label for="centim" class="col s6">centime</label>
+            <div class="range-field col s6">
+              <input type="range" id="euro" name="euro" value="0" min="0" max="100" step="1" />
+            </div>
+            <div class="range-field col s6">
+              <input type="range" id="centim" name="centim" value="0" min="0" max="99" step="1" />
             </div>
             <!-- validation -->
             <div class="input-field col s12">
@@ -97,15 +103,15 @@ $total = 0;
 
       <?php
       // preparation des articles
-      $list = $db->query('SELECT id, name, kilos, gramme, amount, price FROM list ORDER BY id');
+      $list = $db->query('SELECT id, name, kilos, gramme, amount, euro, centim FROM list ORDER BY id');
       // affichage des articles
       echo '
       <table class="bordered centered">
         <thead>
           <tr>
             <th>Article</th>
-            <th>Poid</th>
             <th>Quantité</th>
+            <th>Poid</th>
             <th>Prix</th>
             <th>Supprimer</th>
           </tr>
@@ -114,15 +120,22 @@ $total = 0;
       ';
       // boucle pour afficher tout les articles
       while ($item = $list->fetch()){
+        // define cents
+        $rectif_cent = '';
+        $cent = 0 + $item['centim'];
+        $cent_len = strlen((string)$cent);
+        if($cent_len == 1) {
+          $rectif_cent = 0;
+        }
         // calcul prix total
-        $total = $total + ($item['amount'] * $item['price']);
+        $total = $total + ($item['amount'] * ($item['euro'] + $cent));
         // suite affichage des données
         echo '
             <tr>
               <td>' . $item['name'] . '</td>
-              <td>' . $item['kilos'] . 'Kg ' . $item['gramme'] . 'g</td>
               <td>' . $item['amount'] . '</td>
-              <td>' . $item['price'] . '€</td>
+              <td>' . $item['kilos'] . 'Kg ' . $item['gramme'] . 'g</td>
+              <td>' . $item['euro'] . '€' . $rectif_cent . $item['centim'] . '</td>
               <!-- sepression de post -->
               <td>
                 <form action="delete.php" method="post">
