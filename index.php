@@ -132,7 +132,6 @@ $total_cent = 0;
         $total_euro = $total_euro + ($item['amount'] * ($item['euro']));
         $total_cent = $total_cent + ($item['amount'] * ($item['centim']));
         $rectif_euro = $total_cent / 100;
-        echo $item['name'] . '->' .$rectif_euro;
         for ($x = 0; $x < $item['amount']; $x++) {
           if ($rectif_euro >= 1) {
             $total_euro++;
