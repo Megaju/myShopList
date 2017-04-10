@@ -128,6 +128,7 @@ $total_cent = 0;
         for ($x = 0; $x < $item['amount']; $x++) {
           if ($rectif_euro >= 1) {
             $total_euro++;
+            $rectif_euro--;
             $total_cent -= 100;
           }
         }
