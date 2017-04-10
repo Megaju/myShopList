@@ -1,0 +1,41 @@
+#createForm {
+  height: 0;
+  overflow: hidden;
+  transition: .50s;
+}
+
+/* label color */
+   .input-field label {
+     color: #eceff1;
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #eceff1;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid #26A69A;
+     box-shadow: 0 1px 0 0 #26A69A;
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid #eceff1;
+     box-shadow: 0 1px 0 0 #eceff1;
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid #eceff1;
+     box-shadow: 0 1px 0 0 #eceff1;
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color: #26A69A;
+   }
+
+   input[type=range] {
+     border: 0 solid #000;
+   }
+
+   label {
+     color: #eceff1;
+   }
