@@ -121,13 +121,6 @@ $total_cent = 0;
       ';
       // boucle pour afficher tout les articles
       while ($item = $list->fetch()){
-        // define cents
-        $rectif_cent = '';
-        $cent = 0 + $item['centim'];
-        $cent_len = strlen((string)$cent);
-        if($cent_len == 1) {
-          $rectif_cent = 0;
-        }
         // calcul prix total
         $total_euro = $total_euro + ($item['amount'] * ($item['euro']));
         $total_cent = $total_cent + ($item['amount'] * ($item['centim']));
@@ -138,7 +131,13 @@ $total_cent = 0;
             $total_cent -= 100;
           }
         }
-
+        // define cents
+        $rectif_cent = '';
+        $cent = 0 + $total_cent;
+        $cent_len = strlen((string)$cent);
+        if($cent_len == 1) {
+          $rectif_cent = 0;
+        }
         // suite affichage des données
         echo '
             <tr>
