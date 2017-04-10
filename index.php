@@ -115,7 +115,7 @@ $total = 0;
       while ($item = $list->fetch()){
         // calcul prix total
         $total = $total + ($item['amount'] * $item['price']);
-
+        // suite affichage des données
         echo '
             <tr>
               <td>' . $item['name'] . '</td>
@@ -139,7 +139,7 @@ $total = 0;
         </tbody>
       </table>
       ';
-      echo '<div class="total">Coût total : ' . $total . '€</div>';
+      echo '<div class="total red accent-4 red-text text-lighten-5">Coût total : ' . $total . '€</div>';
       ?>
     </div>
     </div>

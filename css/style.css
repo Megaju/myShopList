@@ -39,3 +39,12 @@
    label {
      color: #eceff1;
    }
+
+   .total {
+     position: fixed;
+     top: 10px;
+     right: 10px;
+     font-weight: 700;
+     padding: 15px 25px;
+     opacity: .9;
+   }
