@@ -163,7 +163,7 @@ $total_cent = 0;
         </tbody>
       </table>
       ';
-      echo '<div class="total red accent-4 red-text text-lighten-5">Coût total : ' . $total_euro . '€' . $rectif_cent . $total_cent . '</div>';
+      echo '<div class="total blue-grey darken-4 blue-grey-text text-lighten-5">Coût total : ' . $total_euro . '€' . $rectif_cent . $total_cent . '</div>';
       ?>
     </div>
     </div>

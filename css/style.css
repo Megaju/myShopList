@@ -42,10 +42,13 @@
 
    .total {
      position: fixed;
-     top: 10px;
-     right: 10px;
+     width: 100%;
+     top: 0;
+     left: 0;
+     text-align: right;
      font-weight: 700;
-     padding: 15px 25px;
+     padding: 5px 10px;
+     box-shadow: 0 1px 5px #263238;
      opacity: .9;
      z-index: 9;
    }
