@@ -68,12 +68,12 @@ include 'db.php';
             <!-- quantité -->
             <label for="amount" class="col s12">Quantité</label>
             <div class="range-field col s12">
-              <input type="range" id="amount" name="amount" value="1" min="1" max="10" step="1" />
+              <input type="range" id="amount" name="amount" value="1" min="0" max="10" step="1" />
             </div>
             <!-- prix en € -->
             <label for="price" class="col s12">Prix</label>
             <div class="range-field col s12">
-              <input type="range" id="price" name="price" value="0" min="1" max="100" step="1" />
+              <input type="range" id="price" name="price" value="0" min="0" max="100" step="1" />
             </div>
             <!-- validation -->
             <div class="input-field col s12">
