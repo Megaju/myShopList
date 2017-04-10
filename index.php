@@ -2,6 +2,8 @@
 session_start();
 
 include 'db.php';
+
+$total = 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,6 +113,9 @@ include 'db.php';
       ';
       // boucle pour afficher tout les articles
       while ($item = $list->fetch()){
+        // calcul prix total
+        $total = $total + ($item['amount'] * $item['price']);
+
         echo '
             <tr>
               <td>' . $item['name'] . '</td>
@@ -134,6 +139,7 @@ include 'db.php';
         </tbody>
       </table>
       ';
+      echo '<div class="total">Coût total : ' . $total . '€</div>';
       ?>
     </div>
     </div>
