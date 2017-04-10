@@ -3,7 +3,8 @@ session_start();
 
 include 'db.php';
 
-$total = 0;
+$total_euro = 0;
+$total_cent = 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -128,7 +129,17 @@ $total = 0;
           $rectif_cent = 0;
         }
         // calcul prix total
-        $total = $total + ($item['amount'] * ($item['euro'] + $cent));
+        $total_euro = $total_euro + ($item['amount'] * ($item['euro']));
+        $total_cent = $total_cent + ($item['amount'] * ($item['centim']));
+        $rectif_euro = $total_cent / 100;
+        echo $item['name'] . '->' .$rectif_euro;
+        for ($x = 0; $x < $item['amount']; $x++) {
+          if ($rectif_euro >= 1) {
+            $total_euro++;
+            $total_cent -= 100;
+          }
+        }
+
         // suite affichage des données
         echo '
             <tr>
@@ -153,7 +164,7 @@ $total = 0;
         </tbody>
       </table>
       ';
-      echo '<div class="total red accent-4 red-text text-lighten-5">Coût total : ' . $total . '€</div>';
+      echo '<div class="total red accent-4 red-text text-lighten-5">Coût total : ' . $total_euro . '€' . $rectif_cent . $total_cent . '</div>';
       ?>
     </div>
     </div>
